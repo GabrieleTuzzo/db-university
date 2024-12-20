@@ -74,7 +74,7 @@ SELECT
     `students`.`surname`,
     `courses`.`id` AS `course_id`,
     `courses`.`name` AS `course_name`,
-    COUNT(`courses`.`id`) AS `tries_number`,
+    COUNT(*) AS `tries_number`,
     MAX(`exam_student`.`vote`) AS `max_vote`
 FROM
     `students`
@@ -87,6 +87,7 @@ INNER JOIN
 GROUP BY
 	`students`.`id`,
     `course_id`
+HAVING `max_vote` >= 18
 ORDER BY
     `students`.`name`;
 ```
